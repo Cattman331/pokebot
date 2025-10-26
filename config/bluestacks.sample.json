@@ -1,0 +1,28 @@
+{
+  "adb_path": "C:/Android/platform-tools/adb.exe",
+  "start_scrcpy": false,
+  "scrcpy_path": null,
+  "scrcpy_args": [],
+  "start_app": "jp.pokemon.pokemontcgp",
+  "openai_model": "gpt-4o",
+  "device": {
+    "serial": "127.0.0.1:5555",
+    "connect": {
+      "host": "127.0.0.1",
+      "port": 5555
+    }
+  },
+  "screen": {
+    "width": 1080,
+    "height": 2340,
+    "base_width": 1080,
+    "base_height": 2340
+  },
+  "ui_overrides": [
+    {
+      "element": "BattleBtn",
+      "x": 719,
+      "y": 2288
+    }
+  ]
+}

@@ -11,6 +11,13 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    const config_mod = b.createModule(.{
+        .root_source_file = b.path("src/config.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    config_mod.addImport("ui", ui_mod);
+
     const openai_mod = b.createModule(.{
         .root_source_file = b.path("src/openai.zig"),
         .target = target,
@@ -36,6 +43,7 @@ pub fn build(b: *std.Build) void {
     // Main depends on andy and openai
     exe_mod.addImport("andy", andy_mod);
     exe_mod.addImport("openai", openai_mod);
+    exe_mod.addImport("config", config_mod);
 
     const exe = b.addExecutable(.{
         .name = "pokebot",

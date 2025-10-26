@@ -126,3 +126,31 @@ adb shell settings get system show_touches # get show_touches values
 
 <br>
 <br>
+
+### configuration
+
+<br>
+
+* runtime settings are loaded from `config/bluestacks.json` by default.
+* set `POKEBOT_CONFIG=/path/to/your-config.json` to load a different profile.
+* copy `config/bluestacks.sample.json` and adjust it for your environment (ADB path, screen size, UI overrides, etc.).
+* `ui_overrides` let you provide per-button coordinates when BlueStacks is using a custom layout. The bot automatically scales the stock coordinates for other resolutions.
+
+<br>
+<br>
+
+### bluestacks emulator
+
+<br>
+
+1. enable **Android Debug Bridge (ADB)** inside BlueStacks advanced settings.
+2. confirm you can connect from your host machine with `adb connect 127.0.0.1:5555`.
+3. update `config/bluestacks.json` with the ADB binary path you are using (for Windows the bundled `HD-Adb.exe`, for macOS/Linux the Android platform tools).
+4. set the `device.serial` field to `127.0.0.1:5555` (or your chosen port) so every tap and screenshot targets the emulator instance.
+5. tweak the `screen` resolution section to match the portrait resolution configured inside BlueStacks. If you play in landscape, add explicit `ui_overrides` for the main battle controls to keep the PvP flow reliable.
+6. optionally provide `scrcpy_path` and set `start_scrcpy` to `true` if you still want the mirrored window on a physical Android device.
+
+These steps make the automation loop stable for queuing PvP matches through BlueStacks without manual rewiring each time the emulator is launched.
+
+<br>
+<br>
